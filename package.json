@@ -1,0 +1,26 @@
+{
+  "name": "certificado-",
+  "version": "1.0.0",
+  "description": "Emissão de certificado  ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/higorcos/Emiss-o_Certificado.git"
+  },
+  "author": "higor Pinheiro Costa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/higorcos/Emiss-o_Certificado/issues"
+  },
+  "homepage": "https://github.com/higorcos/Emiss-o_Certificado#readme",
+  "dependencies": {
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

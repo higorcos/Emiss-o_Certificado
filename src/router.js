@@ -1,9 +1,11 @@
 const express = require('express')
 const routes = express.Router();
 
+const Users = require('../src/model/Users')
 
-routes.get('/',(req,res)=>{
-    res.render('form')
-})
+const FormController = require('../src/controllers/formController')
+
+routes.get('/',FormController.index)
+
 
 module.exports = routes
