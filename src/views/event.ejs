@@ -4,29 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição no evento</title>
+    <title>Evento</title>
 </head>
 <body>
-    <h3>Inscrição</h3>
+   <% result.forEach(name =>{ %>
+       <h5><%= name.id %></h5>
+   <%}) %> 
+    <h3>Event</h3>
     <div>
         <form id="form_subscription" action="/subscription" method="POST">
             <div>
-    <label for="name">name</label>
-    <input id="name" name="name" value="" placeholder="" />
-    </div>
-    <div>
     <label for="event">evento</label>
     <input id="event" name="event" value="" placeholder="" />
     </div>
     <div>
-    <label for="email">email</label>
-    <input id="email" name="email" value="" placeholder="" />
-    </div>
-    <div>
-    <label for="password">senha</label>
-    <input id="password" name="password" value="" placeholder="" />
-    </div>
-    <div>
+
         <button form="form_subscription">Submeter inscrição </button>
     </div>
 </form>

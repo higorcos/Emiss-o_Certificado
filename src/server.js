@@ -10,6 +10,8 @@ server.set('view engine', 'ejs')
 server.set('views',path.join(__dirname, 'views'))
 //habilita arquivos statics
 server.use(express.static('public'))
+//usar o req.body
+server.use(express.urlencoded({extended: true}))
 
 //conexão com o banco de dados 
 database
@@ -24,5 +26,5 @@ database
 //rotas
 server.use(routes)
 
-const port = 3009
+const port = 3001
 server.listen(port, ()=> console.log(`Server Online, port ${port}`))
