@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/higorcos/Emiss-o_Certificado#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "sequelize": "^6.6.2",
     "sqlite3": "^5.0.2"
   },
