@@ -36,6 +36,7 @@ const Users = require('../model/Users')
          res.render('search')
      },
       DoResearch:async (req,res)=>{
+          //login
         const email = req.body.email;
         const password = req.body.password;//senha não é segura
 
@@ -53,13 +54,20 @@ const Users = require('../model/Users')
      
      show: (req,res) => {
          //tem que listar os evento inscritos 
+         // tem q adcionar segurança nessa rota 
         const UserId = req.params.id
     
-        Users.findByPk(UserId).then(result=>{
-            console.log(result)
-            res.render('event', {result: result})
-            //res.send('sisd')
-        }).catch(err=>{console.log(err)})
+        Users.findAll({where:{id:UserId}}).then(result =>{
+            console.log(result,"where")
+
+            if(result != null){
+                
+                res.render('event', {result: result })
+               
+            }else{
+                res.redirect('/search')
+            }
+        }).catch(err =>{console.log(err)})
 
      } 
  }

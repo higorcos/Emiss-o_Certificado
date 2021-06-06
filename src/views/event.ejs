@@ -7,19 +7,19 @@
     <title>Evento</title>
 </head>
 <body>
-   <% result.forEach(name =>{ %>
-       <h5><%= name.id %></h5>
-   <%}) %> 
     <h3>Event</h3>
+    <% result.forEach(function(name){ %>
+        <p><%= name.event  %></p>
+    <%}) %> 
     <div>
-        <form id="form_subscription" action="/subscription" method="POST">
+        <form id="form_event" action="/event" method="POST">
             <div>
     <label for="event">evento</label>
     <input id="event" name="event" value="" placeholder="" />
     </div>
     <div>
 
-        <button form="form_subscription">Submeter inscrição </button>
+        <button form="form_event">imprimir </button>
     </div>
 </form>
 
