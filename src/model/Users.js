@@ -19,10 +19,6 @@ const users = database.define('users',{
     password: { 
         type: Sequelize.STRING,
         allowNull: false
-    },
-    event:{
-        type: Sequelize.STRING,
-        allowNull: false
     }
 
 })

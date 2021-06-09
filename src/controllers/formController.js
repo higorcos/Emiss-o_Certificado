@@ -1,20 +1,33 @@
 const Users = require('../model/Users')
+const Event = require('../model/Event')
+const Subs = require('../model/Subs')
 
  module.exports = {
-     subs: (req,res) => { //inscrição get
+    //register
+    //login 
+    
+    //created_event
+
+    //show_event_open
+    //subscription
+
+    //show_event_concluded
+    //print
+
+    createdUser: (req,res) => { //criação novo usuário  get
 /*         Users.create({name:'xxxxxxx',email:'xxxxxxx@email.com.br',password:"Não passe a senha por aqui",event:"XXXXX"}).then(()=>{
             res.render('form')
     
         }).catch(err =>{
             res.send(err)
-        })  */
-        res.render('form')
+        })  */  
+        res.render('registerUser')
      },
-     createSubs: (req,res) => { //inscrição post
+    saveUser: (req,res) => { //criação novo usuário post
         const name = req.body.name
         const email = req.body.email
         const password = req.body.password //has
-        const event = req.body.event
+        
 
         Users.findAll({where:{email:email}}).then(result => {
             //result == array com os dados encontrados no baco de dados
@@ -22,8 +35,8 @@ const Users = require('../model/Users')
             res.send('esse email já foi registrado ')
 
            }else{
-            Users.create({name:name,email:email,event:event,password:password}).then(()=>{
-                res.send('sucesso')
+            Users.create({name:name,email:email,password:password}).then(()=>{
+                res.redirect('/login')
             }).catch(err=>{
                 console.log(err)
             })}
@@ -31,11 +44,11 @@ const Users = require('../model/Users')
             console.log(err)
         })
      },
-     search: (req,res)=>{ //pesquisa get
+    login: (req,res)=>{ //login get
          //pagina para colocar os dados 
-         res.render('search')
+         res.render('login')
      },
-      DoResearch:async (req,res)=>{
+    loggingIn:async (req,res)=>{ //login post
           //login
         const email = req.body.email;
         const password = req.body.password;//senha não é segura
@@ -46,14 +59,18 @@ const Users = require('../model/Users')
             
             res.redirect(`/user/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
         }else{
-            res.redirect('/search/')
+            res.redirect('/login')
         }
 
         }).catch(err => {console.log(err)})
-     }, //pesquisa post
-     
-     show: (req,res) => {
-         //tem que listar os evento inscritos 
+     }, 
+     show_event_open: (req,res)=>{ //Mostrar eventos em aberto
+        Event.findAll().then(result => {
+            res.render('listEvents', {result:result})
+        })
+
+     },
+    showEvent: (req,res) => { //tem que listar os evento inscritos 
          // tem q adcionar segurança nessa rota 
         const UserId = req.params.id
     
@@ -65,10 +82,12 @@ const Users = require('../model/Users')
                 res.render('event', {result: result })
                
             }else{
-                res.redirect('/search')
+                res.send('Event não encontrado redirecionar para inscrição em evento')
             }
         }).catch(err =>{console.log(err)})
 
      } 
- }
-
+ } 
+//subs
+//createSubs
+//show

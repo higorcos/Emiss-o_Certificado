@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos abertos</title>
+</head>
+<body>
+    <h3>Eventos abertos</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>data</th>
+            <th>horas</th>
+            <th>Organização</th>
+            <th>Inscrição</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% result.forEach(function(event){ %>
+                <tr>
+                <th><%= event.name %></th>
+                <th><%= event.data %></th>
+                <th><%= event.horas %></th>
+                <th><%= event.organização %></th>
+                <th><form method='POST' action="/"><input type='hidden' name='idEvent'value='<%= event.id%>'><button> inscrever</button></button></form></th>
+
+                </tr>
+            <%}) %> 
+        </tbody>
+    </table>
+
+    
+    <div>
+        <form id="form_event" action="/event" method="POST">
+            <div>
+    <label for="event">evento</label>
+    <input id="event" name="event" value="" placeholder="" />
+    </div>
+    <div>
+
+        <button form="form_event">imprimir </button>
+    </div>
+</form>
+
+</body>
+</html>
