@@ -4,24 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento</title>
+    <title>Meus Eventos</title>
 </head>
 <body>
-    <h3>Event</h3>
+    
+    <h3>Meus eventos</h3>
     <% result.forEach(function(name){ %>
         <p><%= name.event  %></p>
     <%}) %> 
-    <div>
-        <form id="form_event" action="/event" method="POST">
-            <div>
-    <label for="event">evento</label>
-    <input id="event" name="event" value="" placeholder="" />
-    </div>
-    <div>
+ 
 
-        <button form="form_event">imprimir </button>
-    </div>
-</form>
 
 </body>
 </html>

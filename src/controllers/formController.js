@@ -48,6 +48,7 @@ const Subs = require('../model/Subs')
          //pagina para colocar os dados 
          res.render('login')
      },
+
     loggingIn:async (req,res)=>{ //login post
           //login
         const email = req.body.email;
@@ -56,26 +57,48 @@ const Subs = require('../model/Subs')
         await Users.findOne({where:{email:email, password:password}}).then(result => {
 
         if(result != null){ //usuario existe
-            
-            res.redirect(`/user/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
+            res.redirect(`/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
         }else{
             res.redirect('/login')
         }
 
         }).catch(err => {console.log(err)})
      }, 
-     show_event_open: (req,res)=>{ //Mostrar eventos em aberto
-        Event.findAll().then(result => {
-            res.render('listEvents', {result:result})
+
+    show_event_open: (req,res)=>{ //Mostra eventos em aberto
+        const idUser = req.params.idUser
+        
+        Event.findAll().then(result => { //busca eventos no banco de dados
+             res.render('listEvents', {result:result, idUser:idUser})
+       
         })
 
      },
-    showEvent: (req,res) => { //tem que listar os evento inscritos 
+    subscriptionEvent: (req,res) =>{ //inscrição em evento 
+            const idEvent = req.body.Event;
+            const idUser = req.body.userMenu;
+            res.send(idUser)
+     },
+     redirectMenu: (req,res) =>{ //vai redirecionar Para login ou para meus eventos 
+       const idUser = req.body.userMenu
+        
+       if(idUser.length == 0){ //usuário não tá logado
+            res.redirect('/login')
+       }else{ 
+            res.redirect(`/user/event/${idUser}`) //página com eventos inscritos 
+       }
+    },
+    showEvent: (req,res) => { // lista os evento inscritos 
          // tem q adcionar segurança nessa rota 
-        const UserId = req.params.id
-    
-        Users.findAll({where:{id:UserId}}).then(result =>{
-            console.log(result,"where")
+         /* 
+         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+         @@@@@@@@@@@@@@@@@@
+         refazer
+         */
+        const idUser = req.params.idUser
+        
+        Users.findAll({where:{id:idUser}}).then(result =>{
+            //console.log(result,"where")
 
             if(result != null){
                 
@@ -88,7 +111,7 @@ const Subs = require('../model/Subs')
 
      } 
  } 
- 
+
 //subs
 //createSubs
 //show

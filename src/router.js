@@ -10,8 +10,13 @@ routes.get('/createdUser',FormController.createdUser)
 routes.post('/createdUser',FormController.saveUser)
 routes.get('/login', FormController.login)
 routes.post('/login',FormController.loggingIn)
-routes.get('/user/event/:id',FormController.showEvent)
-routes.get('/event',FormController.show_event_open)
+
+routes.get('/event/:idUser?',FormController.show_event_open) //Mostra eventos em aberto
+
+routes.post('/event/sub/:idEvent',FormController.subscriptionEvent) //inscrição em evento
+
+routes.post('/user/redirect',FormController.redirectMenu) //Redireciona para login ou menu
+routes.get('/user/event/:idUser',FormController.showEvent)  // lista os evento inscrito
 
 
 module.exports = routes

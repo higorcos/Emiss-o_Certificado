@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos abertos</title>
+    <title>Eventos</title>
 </head>
 <body>
     <h3>Eventos abertos</h3>
+        <div>
+        <form id="form_eventSub" action="/user/redirect" method="POST">
+        </div>
+        <div>
+            
+            <input type='hidden' id="userMenu" name="userMenu" value="<%= idUser %>" />
+            <button form="form_eventSub">Meus Eventos </button>
+        </form>
+    </div>
+    </div>
+    
+        <br>
     <table>
         <thead>
         <tr>
@@ -25,25 +37,21 @@
                 <th><%= event.data %></th>
                 <th><%= event.horas %></th>
                 <th><%= event.organização %></th>
-                <th><form method='POST' action="/"><input type='hidden' name='idEvent'value='<%= event.id%>'><button> inscrever</button></button></form></th>
-
+                <th>
+                <form id='idEvent'method='POST' action="/event/sub/<%= event.id %> "><input type='hidden' name='Event' value="<%= event.id%>">
+                    <input type='hidden' id="userMenu" name="userMenu" value="<%= idUser %>" />
+                <button> inscrever</button></button></form>
+            </th>
                 </tr>
             <%}) %> 
         </tbody>
     </table>
 
-    
-    <div>
-        <form id="form_event" action="/event" method="POST">
-            <div>
-    <label for="event">evento</label>
-    <input id="event" name="event" value="" placeholder="" />
-    </div>
-    <div>
+    <br>
+ 
 
-        <button form="form_event">imprimir </button>
-    </div>
-</form>
+  
+
 
 </body>
 </html>
