@@ -34,9 +34,9 @@
             <% result.forEach(function(event){ %>
                 <tr>
                 <th><%= event.name %></th>
-                <th><%= event.data %></th>
-                <th><%= event.horas %></th>
-                <th><%= event.organização %></th>
+                <th><%= event.date %></th>
+                <th><%= event.hours %></th>
+                <th><%= event.organization %></th>
                 <th>
                 <form id='idEvent'method='POST' action="/event/sub/<%= event.id %> "><input type='hidden' name='Event' value="<%= event.id%>">
                     <input type='hidden' id="userMenu" name="userMenu" value="<%= idUser %>" />
@@ -46,12 +46,7 @@
             <%}) %> 
         </tbody>
     </table>
-
+    
     <br>
- 
-
-  
-
-
 </body>
 </html>

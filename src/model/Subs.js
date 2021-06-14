@@ -10,7 +10,8 @@ const subs = database.define('subs',{
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
-    },credencial: { 
+    },
+    code: { 
         type: Sequelize.STRING,
         allowNull: false
     }

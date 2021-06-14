@@ -14,19 +14,15 @@ const event = database.define('event',{
         type:Sequelize.STRING,
         allowNull: false
     },
-    horas:{
+    hours:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    data:{ 
+    date:{ 
         type: Sequelize.STRING,
         allowNull: false
     },
-    duração:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    organização:{
+    organization:{
         type: Sequelize.STRING,
         allowNull: false
     }
