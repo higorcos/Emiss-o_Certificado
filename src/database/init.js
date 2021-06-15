@@ -1,5 +1,5 @@
 //inicialização do  banco de dados 
-
+/* 
 (async () => {
     
     const database = require('./db');
@@ -20,4 +20,4 @@
     } catch (error) {
         console.log("Erro na criação do banco de dados");
     }
-})();
+})(); */
