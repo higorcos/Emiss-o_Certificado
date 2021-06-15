@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Eventos</title>
+</head>
+<body>
+    <h3>Meus eventos</h3>
+    <% result.forEach(function(name){ %>
+        <p><%= name.event.name  %></p>
+    <%}) %> 
+        <div>
+        <form id="form_" action="/user/" method="POST">
+        </div>
+        <div>
+            
+            <input type='hidden' id="userMenu" name="userMenu" value="" />
+            <button form="form_">Imprimir certificado </button>
+        </form>
+    </div>
+    </div>
+    
+        <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>data</th>
+            <th>horas</th>
+            <th>Organização</th>
+            <th>Inscrição</th>
+        </tr>
+ 
+    </table>
+    
+    <br>
+</body>
+</html>

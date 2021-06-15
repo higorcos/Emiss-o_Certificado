@@ -49,12 +49,12 @@ const Subs = require('../model/Subs')
          res.render('login')
      },
 
-    loggingIn:async (req,res)=>{ //login post
+    loggingIn: (req,res)=>{ //login post
           //login
         const email = req.body.email;
         const password = req.body.password;//senha não é segura
 
-        await Users.findOne({where:{email:email, password:password}}).then(result => {
+        Users.findOne({where:{email:email, password:password}}).then(result => {
 
         if(result != null){ //usuario existe
             res.redirect(`/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
@@ -77,7 +77,9 @@ const Subs = require('../model/Subs')
     subscriptionEvent: (req,res) =>{ //inscrição em evento 
             const idEvent = req.body.Event;
             const idUser = req.body.userMenu;
-            res.send(idUser)
+        Subs.create({code:"00",eventId:idEvent, userId:idUser}).then(()=>{
+            res.redirect(`/user/event/${idUser}`)
+        }).catch(err =>{})
      },
      redirectMenu: (req,res) =>{ //vai redirecionar Para login ou para meus eventos 
        const idUser = req.body.userMenu
@@ -95,7 +97,13 @@ const Subs = require('../model/Subs')
          @@@@@@@@@@@@@@@@@@
          refazer
          */
-        const idUser = req.params.idUser
+        
+         const idUser = req.params.idUser
+         Subs.findAll({include:[{ model: Event}]},{where: {userId: idUser }} ).then(result => {
+             
+             res.render("userEvents", {result:result})
+         }).catch(err => {console.log(err)})
+/*         
         
         Users.findAll({where:{id:idUser}}).then(result =>{
             //console.log(result,"where")
@@ -108,7 +116,7 @@ const Subs = require('../model/Subs')
                 res.send('Event não encontrado redirecionar para inscrição em evento')
             }
         }).catch(err =>{console.log(err)})
-
+ */
      } 
  } 
 
