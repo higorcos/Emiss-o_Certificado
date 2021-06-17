@@ -8,32 +8,40 @@
 </head>
 <body>
     <h3>Meus eventos</h3>
-    <% result.forEach(function(name){ %>
-        <p><%= name.event.name  %></p>
-    <%}) %> 
-        <div>
-        <form id="form_" action="/user/" method="POST">
-        </div>
-        <div>
-            
-            <input type='hidden' id="userMenu" name="userMenu" value="" />
-            <button form="form_">Imprimir certificado </button>
-        </form>
-    </div>
-    </div>
-    
-        <br>
     <table>
         <thead>
         <tr>
             <th>Nome</th>
-            <th>data</th>
-            <th>horas</th>
+            <th>Data</th>
+            <th>Horas</th>
             <th>Organização</th>
-            <th>Inscrição</th>
+            <th>Certificado</th>
         </tr>
- 
+        </thead>
+        <tbody>
+            <% Subs.forEach(function(sub){ %>
+                <%= sub.id %>
+              <%= %>
+              <% Event.forEach(function(event){ %>
+                <% if (event.id == sub.eventId) { %>       
+                    <tr> 
+                    <th><%= event.name %></th>
+                    <th><%= event.date %></th>
+                    <th><%= event.hours %></th>
+                    <th><%= event.organization %></th>
+                    <!-- Fazer teste se o certificado tá liberado para o participante  -->
+                    <th>
+                    <form id="form_print" action="/user/event/print/<%=sub.id%>" method="POST">
+                    <input type='hidden' id="printCertificate" name="printCertificate" value='' />
+                    <button>Imprimir certificado </button></form>
+                    </th>  
+                    </tr>
+                                                             <% } %>   
+                                                             <%}) %> 
+                                                              <%}) %> 
+        </tbody>
     </table>
+    
     
     <br>
 </body>

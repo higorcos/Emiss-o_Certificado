@@ -38,9 +38,10 @@
                 <th><%= event.hours %></th>
                 <th><%= event.organization %></th>
                 <th>
-                <form id='idEvent'method='POST' action="/event/sub/<%= event.id %> "><input type='hidden' name='Event' value="<%= event.id%>">
+                <form id='idEvent'method='POST' action="/event/sub/<%= event.id %> ">
+                    <input type='hidden' name='Event' value="<%= event.id%>">
                     <input type='hidden' id="userMenu" name="userMenu" value="<%= idUser %>" />
-                <button> inscrever</button></button></form>
+                <button> inscrever</button></form>
             </th>
                 </tr>
             <%}) %> 
