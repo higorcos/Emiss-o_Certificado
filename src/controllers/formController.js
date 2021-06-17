@@ -77,6 +77,7 @@ const Subs = require('../model/Subs')
     subscriptionEvent: (req,res) =>{ //inscrição em evento 
             const idEvent = req.body.Event;
             const idUser = req.body.userMenu;
+
         Subs.create({code:"00",eventId:idEvent, userId:idUser}).then(()=>{
             res.redirect(`/user/event/${idUser}`)
         }).catch(err =>{})
@@ -99,9 +100,22 @@ const Subs = require('../model/Subs')
          */
         
          const idUser = req.params.idUser
-         Subs.findAll({include:[{ model: Event}]},{where: {userId: idUser }} ).then(result => {
+
+         Subs.findAll({where: {userId: idUser }}).then(Subs => {
+             //{include:[{ model: Event}]},
+             var idEventSearch = []
              
-             res.render("userEvents", {result:result})
+             Subs.forEach(id =>{  //vai colocar em um array todos os idEvents para pesquisar diretamente no banco de dados dos eventos
+                idEventSearch.push(id.eventId)
+                 
+                })
+                //console.log('')
+            Event.findAll({where:{id:idEventSearch}}).then(Event => { // vai pesquisar apenas os events q o usuario tá inscrito (idEventSearch foi achado através da pesquisa na tabea subs)
+               
+                res.render("userEvents", {Event:Event, Subs: Subs })
+                  
+            }).catch(err =>{console.log(err)})
+ 
          }).catch(err => {console.log(err)})
 /*         
         
