@@ -2,9 +2,9 @@
   "name": "certificado-",
   "version": "1.0.0",
   "description": "Emissão de certificado  ",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
