@@ -1,6 +1,7 @@
 const Users = require('../model/Users')
 const Event = require('../model/Event')
 const Subs = require('../model/Subs')
+const { render } = require('ejs')
 
  module.exports = {
     //register
@@ -91,6 +92,27 @@ const Subs = require('../model/Subs')
             res.redirect(`/user/event/${idUser}`) //página com eventos inscritos 
        }
     },
+    newEvent:(req,res)=>{
+        res.render('newEvent'); 
+    },
+    saveEvent: (req,res) => {
+       
+ 
+        const name = req.body.name;
+        const date = req.body.date;
+        const idHours = req.body.idHours;
+        const organization = req.body.organization;
+
+        Event.create({name:name, hours:idHours, date:date, organization:organization}).then(()=>{
+            res.redirect('/event/');
+            
+        }).catch(err => {
+            res.redirect('/admin/event/new')
+        })
+        
+
+
+    },
     showEvent: (req,res) => { // lista os evento inscritos 
          // tem q adcionar segurança nessa rota 
          /* 
@@ -106,12 +128,12 @@ const Subs = require('../model/Subs')
              var idEventSearch = []
              
              Subs.forEach(id =>{  //vai colocar em um array todos os idEvents para pesquisar diretamente no banco de dados dos eventos
-                idEventSearch.push(id.eventId)
+                idEventSearch.push(id.eventId);
                  
                 })
                 //console.log('')
             Event.findAll({where:{id:idEventSearch}}).then(Event => { // vai pesquisar apenas os events q o usuario tá inscrito (idEventSearch foi achado através da pesquisa na tabea subs)
-               
+                 
                 res.render("userEvents", {Event:Event, Subs: Subs })
                   
             }).catch(err =>{console.log(err)})

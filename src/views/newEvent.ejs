@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Eventos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h3>Novo evento</h3>
+    <div>
+        <form id=formNewEvent action="/admin/event/save" method="POST">
+            <div>
+                <label for="idName">Nome: </label>
+                <input id="idName" name="name" />
+            </div>
+            <div>
+                <label for="idDate">Data: </label>
+                <input id="idDate" name="date"  type="datetime-local"/>
+            </div>
+            <div>
+                <label for="idHours">Carga Horária: (hora:minutos) </label>
+                <input id="idHours" name="idHours" placeholder="horas" type="number"/>
+            </div>
+            <div>
+                <label for="idOrganization">Organização</label>
+                <input id="idOrganization" name="organization" placeholder="Organizadores do evento"/>
+            </div>
+            <br>
+        </form>
+        <button form="formNewEvent">Criar Evento</button>
+        <a href='/event/'>Eventos</a>
+    </div>
+    
+</body>
+</html>

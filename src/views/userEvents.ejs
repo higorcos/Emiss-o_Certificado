@@ -20,8 +20,7 @@
         </thead>
         <tbody>
             <% Subs.forEach(function(sub){ %>
-                <%= sub.id %>
-              <%= %>
+               
               <% Event.forEach(function(event){ %>
                 <% if (event.id == sub.eventId) { %>       
                     <tr> 
@@ -35,9 +34,9 @@
                     <input type='hidden' id="printCertificate" name="printCertificate" value='' />
                     <button>Imprimir certificado </button></form>
                     </th>  
-                    </tr>
-                                                             <% } %>   
-                                                             <%}) %> 
+                </tr>
+                    <% } %>   
+                    <%}) %> 
                                                               <%}) %> 
         </tbody>
     </table>
