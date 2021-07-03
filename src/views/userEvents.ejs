@@ -30,9 +30,9 @@
                     <th><%= event.organization %></th>
                     <!-- Fazer teste se o certificado tá liberado para o participante  -->
                     <th>
-                    <form id="form_print" action="/user/event/print/<%=sub.id%>" method="POST">
-                    <input type='hidden' id="printCertificate" name="printCertificate" value='' />
-                    <button>Imprimir certificado </button></form>
+                    <button>
+                        <a href="/user/event/print/emit/<%= event.id %>" target="_blank" >Imprimir certificado</a>
+                    </button>
                     </th>  
                 </tr>
                     <% } %>   

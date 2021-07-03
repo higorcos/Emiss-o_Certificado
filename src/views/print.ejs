@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado</title>
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: blueviolet;
+        }
+        p{
+            text-align: center;
+        }
+        h3{
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <h3>Certificado</h3>
+    <p>
+    <% Subs.forEach(function(sub){ %>
+               
+        <% Event.forEach(function(event){ %>
+          <% if (event.id == sub.eventId) { %>       
+     
+    <%= event.name %>
+    <%= event.date %>
+    <%= event.hours %>
+    <%= event.organization %>
+  
+    <%=sub.userId%>' />
+             
+    <% } %>   
+    <%}) %> 
+    <%}) %> 
+    </p>
+</body>
+</html>

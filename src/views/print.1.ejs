@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado</title>
+</head>
+<body>
+    <% Subs.forEach(function(sub){ %>
+               
+        <% Event.forEach(function(event){ %>
+          <% if (event.id == sub.eventId) { %>       
+     
+    <%= event.name %>
+    <%= event.date %>
+    <%= event.hours %>
+    <%= event.organization %>
+  
+    <%=sub.userId%>' />
+             
+    <% } %>   
+    <%}) %> 
+    <%}) %> 
+    
+</body>
+</html>
