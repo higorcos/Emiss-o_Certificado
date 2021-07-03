@@ -22,5 +22,8 @@ routes.get('/admin/event/new',FormController.newEvent); //criar evento
 routes.post('/admin/event/save',FormController.saveEvent);
 //criar painel do adm 
 
+routes.get('/user/event/print/:idEvent',FormController.printCertificate) //Página html com certificado 
+routes.get('/user/event/print/emit/:idEvent',FormController.emitCertificate) //emissão do pdf (certificado)
+
 
 module.exports = routes 

@@ -1,7 +1,9 @@
 const Users = require('../model/Users')
 const Event = require('../model/Event')
 const Subs = require('../model/Subs')
-const { render } = require('ejs')
+const puppeteer = require('puppeteer');
+
+
 
  module.exports = {
     //register
@@ -95,7 +97,7 @@ const { render } = require('ejs')
     newEvent:(req,res)=>{
         res.render('newEvent'); 
     },
-    saveEvent: (req,res) => {
+    saveEvent: (req,res) => {  //salva evento criado
        
  
         const name = req.body.name;
@@ -113,13 +115,8 @@ const { render } = require('ejs')
 
 
     },
-    showEvent: (req,res) => { // lista os evento inscritos 
-         // tem q adcionar segurança nessa rota 
-         /* 
-         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-         @@@@@@@@@@@@@@@@@@
-         refazer
-         */
+    showEvent: (req,res) => { // lista os evento inscritos /meus eventos @@@@@ // tem q adicionar segurança nessa rota 
+         
         
          const idUser = req.params.idUser
 
@@ -132,14 +129,60 @@ const { render } = require('ejs')
                  
                 })
                 //console.log('')
-            Event.findAll({where:{id:idEventSearch}}).then(Event => { // vai pesquisar apenas os events q o usuario tá inscrito (idEventSearch foi achado através da pesquisa na tabea subs)
+            Event.findAll({where:{id:idEventSearch}}).then(Event => { // vai pesquisar apenas os events q o usuário tá inscrito (idEventSearch foi achado através da pesquisa na tabela subs)
                  
                 res.render("userEvents", {Event:Event, Subs: Subs })
                   
             }).catch(err =>{console.log(err)})
  
          }).catch(err => {console.log(err)})
-/*         
+
+     },
+    printCertificate: async (req,res) =>{ //html certificado
+  
+        const idEventSearch = req.params.idEvent;
+        
+
+      
+       Subs.findAll({where: {eventId: idEventSearch }}).then(Subs => {
+          
+        Event.findAll({where:{id:idEventSearch}}).then(Event => { 
+
+        res.render("print", {Event:Event, Subs: Subs });
+
+        }).catch(err =>{console.log(err)})
+        }).catch(err => {console.log(err)})
+         
+    },
+    emitCertificate: async (req,res) =>{ //pdf certificado
+
+        const idEvent = req.params.idEvent;
+        
+        const browser = await puppeteer.launch() 
+        const page = await browser.newPage()
+                                                // direciona o endereço  
+        await page.goto(`http://localhost:8080/user/event/print/${idEvent}`,{
+            waitUntil: 'networkidle0'  // até carregar a página totalmente     
+        }) 
+
+        const pdf = await page.pdf({ //vai esperar a página gerar um pdf
+            printBackground: true, //vai passar alguns parâmetros para ele colocar no pdf 
+            format: 'Letter'
+        })
+        
+        await browser.close();
+        
+        res.contentType("application/pdf") //vai enviar o pdf para o página se essa parte estiver comentada o pdf será baixado
+
+        return res.send(pdf)
+         
+        
+    }
+ } 
+
+//adm 
+//segurança as senhas
+ /*         
         
         Users.findAll({where:{id:idUser}}).then(result =>{
             //console.log(result,"where")
@@ -153,9 +196,6 @@ const { render } = require('ejs')
             }
         }).catch(err =>{console.log(err)})
  */
-     } 
- } 
 
-//subs
-//createSubs
-//show
+
+

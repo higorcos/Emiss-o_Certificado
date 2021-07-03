@@ -4,7 +4,7 @@ const path = require('path')
 const database = require('../src/database/db')
 const server = express();
 
-//usar o tamplate engine 
+//usar o template engine 
 server.set('view engine', 'ejs')
 //localização da pasta view
 server.set('views',path.join(__dirname, 'views'))
@@ -26,5 +26,5 @@ database
 //rotas
 server.use(routes)
 
-const port = 3001
+const port = 8080
 server.listen(port, ()=> console.log(`Server Online, port ${port}`))
