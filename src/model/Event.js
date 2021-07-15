@@ -28,8 +28,7 @@ const event = database.define('event',{
     }
 
 });
-//users.hasMany(event) //relacinamento 1 para M(muitos) com siquelize
-//event.belongTo(users)//relacinamento 1 para 1 com siquelize
+
 
 event.sync({force: false})// Vai criar a tabela quando não existir
 

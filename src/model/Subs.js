@@ -18,8 +18,8 @@ const subs = database.define('subs',{
 
 });
 //event_id e user_id 
-event.hasMany(subs) //relacinamento 1 para M(muitos) com siquelize
-subs.belongsTo(event)//relacinamento 1 para 1 com siquelize
+event.hasMany(subs) //relacionamento 1 para M(muitos) com sequelize
+subs.belongsTo(event)//relacionamento 1 para 1 com sequelize
 
 users.hasMany(subs)
 subs.belongsTo(users)
