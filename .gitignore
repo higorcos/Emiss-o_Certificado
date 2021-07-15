@@ -1,3 +1,6 @@
+#bance de dados para não atrapalhar 
+database.sqlite
+
 # Logs
 logs
 *.log
