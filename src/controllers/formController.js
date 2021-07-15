@@ -1,7 +1,10 @@
-const Users = require('../model/Users')
-const Event = require('../model/Event')
-const Subs = require('../model/Subs')
-const puppeteer = require('puppeteer');
+const Users = require('../model/Users');
+const Event = require('../model/Event');
+const Subs = require('../model/Subs');
+const Permission = require('../model/Permissions');
+const Authorization = require('../model/Authorization');
+
+const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
 
 
 
@@ -51,16 +54,22 @@ const puppeteer = require('puppeteer');
          //pagina para colocar os dados 
          res.render('login')
      },
-
     loggingIn: (req,res)=>{ //login post
           //login
         const email = req.body.email;
         const password = req.body.password;//senha não é segura
 
         Users.findOne({where:{email:email, password:password}}).then(result => {
+        /// tem q refazer essa parte 
+        if(result != null){ //usuário existe
 
-        if(result != null){ //usuario existe
             res.redirect(`/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
+
+            req.session.user = {
+                id: result.id,
+                email: result.email,
+            }
+    
         }else{
             res.redirect('/login')
         }
@@ -95,6 +104,7 @@ const puppeteer = require('puppeteer');
        }
     },
     newEvent:(req,res)=>{
+    
         res.render('newEvent'); 
     },
     saveEvent: (req,res) => {  //salva evento criado
@@ -172,7 +182,7 @@ const puppeteer = require('puppeteer');
         
         await browser.close();
         
-        res.contentType("application/pdf") //vai enviar o pdf para o página se essa parte estiver comentada o pdf será baixado
+        res.contentType("application/pdf") //vai enviar o pdf para o página. se essa parte estiver comentada o pdf será baixado
 
         return res.send(pdf)
          
@@ -181,6 +191,7 @@ const puppeteer = require('puppeteer');
  } 
 
 //adm 
+// controle de acesso 
 //segurança as senhas
  /*         
         
