@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Permissões</title>
+
+
+</head>
+<body>
+    <h1>Nova permissão</h1>
+
+    <div>
+    <form id=formNewPermissions action='/admin/permissions/save' method="POST">
+        <div>
+            <label for="idPermission">Nome: </label>
+            <input id="idPermission" name="permission" /> 
+        </div>
+        <div>
+            <label for="idDescription">Descrição: </label>
+            <input id="idDescription"  name="description" placeholder="Descrição da permissão" />
+        </div>
+        <br>
+    </form>
+    <button form="formNewPermissions">Criar Permissões</button>
+    <a href='/admin/permissions'>Permissões</a>
+    </div>
+
+</body>
+
+</html>
