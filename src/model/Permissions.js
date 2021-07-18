@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../database/db');
 
-const permission = database.define('permission',{
+const permissions = database.define('permissions',{
     id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -17,7 +17,7 @@ const permission = database.define('permission',{
         allowNull: false,
     }
 })
-permission.sync({force: true});
+permissions.sync({force: false});
 
 
-module.exports = permission;
+module.exports = permissions;
