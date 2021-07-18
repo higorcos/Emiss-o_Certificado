@@ -1,7 +1,7 @@
 const Users = require('../model/Users');
 const Event = require('../model/Event');
 const Subs = require('../model/Subs');
-const Permission = require('../model/Permissions');
+const Permissions = require('../model/Permissions');
 const Authorization = require('../model/Authorization');
 
 const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
@@ -54,7 +54,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
          //pagina para colocar os dados 
          res.render('login')
      },
-    loggingIn: (req,res)=>{ //login post
+    loggingIn: (req,res)=>{ //login post //+++++++++++++  correção
           //login
         const email = req.body.email;
         const password = req.body.password;//senha não é segura
@@ -63,15 +63,15 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
         /// tem q refazer essa parte 
         if(result != null){ //usuário existe
 
-            res.redirect(`/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
-
             req.session.user = {
                 id: result.id,
                 email: result.email,
             }
-    
+            res.redirect(`/event/${result.id}`) //vai mandar para uma rota com o id do user encontrado
+
         }else{
             res.redirect('/login')
+           
         }
 
         }).catch(err => {console.log(err)})
@@ -83,7 +83,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
         Event.findAll().then(result => { //busca eventos no banco de dados
              res.render('listEvents', {result:result, idUser:idUser})
        
-        })
+        }).catch(err => {console.log(err)})
 
      },
     subscriptionEvent: (req,res) =>{ //inscrição em evento 
@@ -94,7 +94,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
             res.redirect(`/user/event/${idUser}`)
         }).catch(err =>{})
      },
-     redirectMenu: (req,res) =>{ //vai redirecionar Para login ou para meus eventos 
+    redirectMenu: (req,res) =>{ //vai redirecionar Para login ou para meus eventos 
        const idUser = req.body.userMenu
         
        if(idUser.length == 0){ //usuário não tá logado
@@ -163,7 +163,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
         }).catch(err =>{console.log(err)})
         }).catch(err => {console.log(err)})
          
-    },
+    },  
     emitCertificate: async (req,res) =>{ //pdf certificado
 
         const idEvent = req.params.idEvent;
@@ -187,9 +187,34 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
         return res.send(pdf)
          
         
-    }
- } 
+    }, 
+    permissionsShow:(req,res)=>{ // Página para mostrar todas as permissões criadas
+        Permissions.findAll().then(result => {
+            res.render('showPermissions', {result:result});
+        }).catch(err => {console.log(err)})
+    },   
+    permissionsNew:(req,res)=>{ // Página criar permissões 
+ 
+        res.render('newPermissions')
+    }, 
+    permissionsSave:(req,res)=>{ // ROTA POTS criar permissões 
+        const permission = req.body.permission;
+        const description = req.body.description;
 
+        Permissions.findOne({where:{name:permission}}).then(result => {
+
+        if(result != null){ //Permission já existe
+            res.redirect('/admin/permissions/new')
+        }else{  
+            Permissions.create({name:permission,description:description}).then(result =>{
+            res.redirect('/admin/permissions')
+
+            }).catch(err => {console.log(err)})
+            }
+        }).catch(err =>{console.log(err)})
+    },
+ } 
+ 
 //adm 
 // controle de acesso 
 //segurança as senhas
