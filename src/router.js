@@ -27,6 +27,12 @@ routes.get('/admin/permissions', FormController.permissionsShow) // Página para
 routes.get('/admin/permissions/new', FormController.permissionsNew) // Página para criar permissões
 routes.post('/admin/permissions/save',FormController.permissionsSave); //rota post criação permissões 
 
+//rotas autorização 
+routes.get('/admin/authorization', FormController.authorizationShow);
+routes.get('/admin/authorization/new', FormController.authorizationNew);
+routes.post('/admin/authorization/save', FormController.authorizationSave);
+
+
 routes.get('/rec', (req, res) => {
     req.session.prot = 23;
     res.send("feito")    

@@ -5,7 +5,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Permissões</title>
+    <title>Autorização</title>
 
 </head>
 
@@ -16,34 +16,34 @@
         <thead>
              
         <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Autorizados</th>
+            <th>Permissão</th>
+            <th>Usuário autorizado</th>
+            
 
         </tr>
         </thead>
         <tbody>
 
         <tr>
-            <% if(result.forEach(permissions => {%>
-                <th> <%= permissions.name %> </th>
-                <th><%= permissions.description %></th>
+            <% if(result.forEach(auth => {%>
+                <th> <%= auth.permission.name %> </th>
+                <th><%= auth.user.name %></th>
 
-            <th>user22039</th>
+          
             
             <th>
-            <form id='idPermissions' method='POST' action='/admin/permissions/delete'>
+            <form id='idAuthorizationDelete' method='POST' action='/admin/authorization/delete'>
             <input type='hidden' name='' value=''>
             <input type='hidden' id='' name='' value='' />
-            <button> Deletar</button>
+            <button> Remover autorização</button>
             </form>
             </th>
         </tr>
         <%})) %> 
-        
+
     </tbody>
 </table>
-<a href='/admin/permissions/new'>criar nova permissão</a>
+<a href='/admin/authorization/new'> Criar nova autorização</a>
 
 </body>
 <script>

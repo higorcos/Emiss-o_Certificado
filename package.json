@@ -18,6 +18,7 @@
   "homepage": "https://github.com/higorcos/Emiss-o_Certificado#readme",
   "dependencies": {
     "ejs": "^3.1.6",
+    "express-session": "^1.17.2",
     "puppeteer": "^10.1.0",
     "puppeteer-core": "^10.1.0",
     "sequelize": "^6.6.2",

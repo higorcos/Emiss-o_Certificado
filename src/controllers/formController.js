@@ -194,7 +194,6 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
         }).catch(err => {console.log(err)})
     },   
     permissionsNew:(req,res)=>{ // Página criar permissões 
- 
         res.render('newPermissions')
     }, 
     permissionsSave:(req,res)=>{ // ROTA POTS criar permissões 
@@ -213,6 +212,43 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
             }
         }).catch(err =>{console.log(err)})
     },
+    
+    authorizationShow:(req,res)=>{ // Página para mostrar todas as autorizações
+        Authorization.findAll({
+            include: [{model: Permissions},{model:Users}]
+        }).then(result => {
+            res.render('showAuthorization', {result:result});
+        }).catch(err => {console.log(err)})
+    },   
+    authorizationNew:(req,res)=>{ // Página criar autorizações 
+       
+        Permissions.findAll().then(permissions =>{
+            Users.findAll().then(users =>{
+
+                res.render('newAuthorization', {users:users, permissions:permissions});
+
+            }).catch(err =>{console.log(err)});
+        }).catch(err =>{console.log(err)});
+    }, 
+    authorizationSave:(req,res)=>{ // ROTA POTS criar autorizações 
+        
+        const userId = req.body.userId;
+        const permissionId = req.body.permissionId;
+
+        console.log(userId, permissionId);
+
+        Authorization.findOne({where:{userId:userId,permissionId:permissionId}}).then(result => {
+
+        if(result != null){ //Permission já existe
+            res.redirect('/admin/authorization/new')
+        }else{  
+            Authorization.create({userId:userId,permissionId:permissionId }).then(result =>{
+            res.redirect('/admin/authorization')
+
+            }).catch(err => {console.log(err)})
+            }
+        }).catch(err =>{console.log(err)})
+    }
  } 
  
 //adm 

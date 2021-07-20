@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autorização</title>
+
+
+</head>
+<body>
+    <h1>Nova Autorização</h1>
+
+    <div>
+    <form id=formNewAuthorization action='/admin/authorization/save' method="POST">
+        <div>
+            <label for="idAuthorizationUser">Usuário: </label>
+            <select id='idAuthorizationUser' name='userId' >
+                <% users.forEach(user =>{%>
+                    <option value="<%-user.id%>"><%- user.name %></option>
+                    <%}) %> 
+            </select>
+            <label for="idAuthorizationPermission">Descrição: </label>
+            <select id='idAuthorizationPermission' name='permissionId'>
+                <% permissions.forEach(permission =>{%> 
+                    <option value="<%-permission.id%>"><%- permission.name %></option>
+                    <%}) %>
+            </select>
+        </div>
+        <br>
+    </form>
+    <button form="formNewAuthorization">Criar Autorização</button><br>
+    <a href='/admin/authorization'>Visualizar autorizações</a><br>
+    <a href='/admin/permissions/new'>criar nova permissão</a>
+    </div>
+<div>
+</div>
+</body>
+
+</html>
