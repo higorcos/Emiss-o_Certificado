@@ -76,7 +76,6 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
 
         }).catch(err => {console.log(err)})
      }, 
-
     show_event_open: (req,res)=>{ //Mostra eventos em aberto
         const idUser = req.params.idUser
         
@@ -94,15 +93,6 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
             res.redirect(`/user/event/${idUser}`)
         }).catch(err =>{})
      },
-    redirectMenu: (req,res) =>{ //vai redirecionar Para login ou para meus eventos 
-       const idUser = req.body.userMenu
-        
-       if(idUser.length == 0){ //usuário não tá logado
-            res.redirect('/login')
-       }else{ 
-            res.redirect(`/user/event/${idUser}`) //página com eventos inscritos 
-       }
-    },
     newEvent:(req,res)=>{
     
         res.render('newEvent'); 
@@ -127,8 +117,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
     },
     showEvent: (req,res) => { // lista os evento inscritos /meus eventos @@@@@ // tem q adicionar segurança nessa rota 
          
-        
-         const idUser = req.params.idUser
+         const idUser = req.body.idUser; 
 
          Subs.findAll({where: {userId: idUser }}).then(Subs => {
              //{include:[{ model: Event}]},
@@ -212,7 +201,15 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
             }
         }).catch(err =>{console.log(err)})
     },
-    
+    permissionsDelete:(req,res)=>{//rota para deletar uma permissão criada
+        const permissionId = req.body.deleteId;
+        Permissions.destroy({where: {id:permissionId}}).then(result =>{
+            res.redirect('/admin/permissions');
+        }).catch(err =>{console.log(err)
+            res.redirect('/admin/permissions');
+            
+        });
+    },
     authorizationShow:(req,res)=>{ // Página para mostrar todas as autorizações
         Authorization.findAll({
             include: [{model: Permissions},{model:Users}]
@@ -248,26 +245,20 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
             }).catch(err => {console.log(err)})
             }
         }).catch(err =>{console.log(err)})
-    }
+    },
+    authorizationDelete:(req,res)=>{ //
+        const authorizationId = req.body.deleteId;
+        Authorization.destroy({where:{id:authorizationId}}).then(result =>{
+            res.redirect('/admin/authorization');
+        }).catch(err => {console.log(err);
+            res.redirect('/admin/authorization');
+        })
+    },
  } 
  
 //adm 
 // controle de acesso 
 //segurança as senhas
- /*         
-        
-        Users.findAll({where:{id:idUser}}).then(result =>{
-            //console.log(result,"where")
-
-            if(result != null){
-                
-                res.render('event', {result: result })
-               
-            }else{
-                res.send('Event não encontrado redirecionar para inscrição em evento')
-            }
-        }).catch(err =>{console.log(err)})
- */
 
 
 
