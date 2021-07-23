@@ -9,11 +9,11 @@
 <body>
     <h3>Eventos abertos</h3>
         <div>
-        <form id="form_eventSub" action="/user/redirect" method="POST">
+        <form id="form_eventSub" action="/user/event" method="POST">
         </div>
         <div>
             
-            <input type='hidden' id="userMenu" name="userMenu" value="<%= idUser %>" />
+            <input type='hidden' id="userMenu" name="idUser" value="<%= idUser %>" />
             <button form="form_eventSub">Meus Eventos </button>
         </form>
     </div>

@@ -18,8 +18,7 @@
         <tr>
             <th>Nome</th>
             <th>Descrição</th>
-            <th>Autorizados</th>
-
+          
         </tr>
         </thead>
         <tbody>
@@ -28,13 +27,9 @@
             <% if(result.forEach(permissions => {%>
                 <th> <%= permissions.name %> </th>
                 <th><%= permissions.description %></th>
-
-            <th>user22039</th>
-            
             <th>
             <form id='idPermissions' method='POST' action='/admin/permissions/delete'>
-            <input type='hidden' name='' value=''>
-            <input type='hidden' id='' name='' value='' />
+            <input type='hidden' id='' name='deleteId' value='<%-permissions.id%>' />
             <button> Deletar</button>
             </form>
             </th>
