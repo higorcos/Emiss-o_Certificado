@@ -14,7 +14,7 @@ const permissions = database.define('permissions',{
     },
     description:{
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
     }
 })
 permissions.sync({force: false});

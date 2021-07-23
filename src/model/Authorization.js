@@ -12,10 +12,10 @@ const Authorization = database.define('authorization',{
         primaryKey: true,
     }
 });
-Users.hasMany(Authorization);   //relacionamento 1 para M(muitos) com sequelize
+Users.hasMany(Authorization,{onDelete: 'cascade', hooks:true});   //relacionamento 1 para M(muitos) com sequelize
 Authorization.belongsTo(Users); //relacionamento 1 para 1 com sequelize
 
-Permission.hasMany(Authorization);
+Permission.hasMany(Authorization,{onDelete: 'cascade', hooks:true});// delete em cascade
 Authorization.belongsTo(Permission);
 
 Authorization.sync({force:false});
