@@ -10,7 +10,7 @@ function adminAuth(req, res, next) {
             console.log("logado")
             next(); // dar continuidade
         }).catch(err => { console.log('não autorizado') })
-      
+        
     } else {
 
         res.redirect('/') //quando não está logado é redirecionado 

@@ -4,16 +4,12 @@ const Authorization = require('../model/Authorization');
 
 function adminAuth(req, res, next) {
     if (req.session.user != undefined) { // quando está logado 
-        const userId = req.session.user.id;
-        //pesquisar no banco de dados a permissão
-        Authorization.findAll({ where: { id: userId } }).then(result => {
-            console.log("logado")
-            next(); // dar continuidade
-        }).catch(err => { console.log('não autorizado') })
-      
+
+        next(); // dar continuidade
+
     } else {
 
-        res.redirect('/') //quando não está logado é redirecionado 
+        res.redirect('/login') //quando não está logado é redirecionado 
     }
 }
 module.exports = adminAuth
