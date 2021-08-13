@@ -1,27 +1,27 @@
-// função para apenas usuários autenticados entrar nas rotas administrativas 
-// o middleware está entre o usuário e a rota por isso o método next() é usado para passar a autenticação em diante 
+ // o middleware está entre o usuário e a rota por isso o método next() é usado para passar a autenticação em diante 
+// esse middleware foi feito para limitar o acesso do moderador
+
 const Authorization = require('../model/Authorization');
 
- function  managerAuth(req, res, next) {
+const moderator = 3;//id moderator
+
+ function  moderatorAuth(req, res, next) {
     
      if (req.session.user != undefined) { // quando está logado 
         const userId = req.session.user.id;    
         //pesquisar no banco de dados a permissão
         // tem que ter a permissão de moderador 
         
-        const moderador = 1;
-        Authorization.findAll({ where: { userId: userId } }).then(result => {
+        Authorization.findAll({ where: { userId: userId,permissionId:moderator } }).then(result => {
             if(result.length != 0){
                 
-                console.log(userId,result,typeof(result))
-
                 next(); // dar continuidade
  
             }else{
-              //res.redirect('') //quando não está logado é redirecionado 
+              
                 res.redirect('/event');
             }
-        }).catch(err => { console.log('não autorizado')
+        }).catch(err => {
         res.redirect('/event');
     })
 
@@ -31,4 +31,4 @@ const Authorization = require('../model/Authorization');
         res.redirect('/') //quando não está logado é redirecionado 
     }
 }
-module.exports = managerAuth
+module.exports = moderatorAuth;

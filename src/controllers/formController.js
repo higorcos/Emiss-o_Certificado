@@ -90,7 +90,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
             const idUser = req.body.userMenu;
 
         Subs.create({code:"00",eventId:idEvent, userId:idUser}).then(()=>{
-            res.redirect(`/user/event/${idUser}`)
+            res.redirect(`/user/event`)
         }).catch(err =>{})
      },
     newEvent:(req,res)=>{
@@ -117,7 +117,7 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
     },
     showEvent: (req,res) => { // lista os evento inscritos /meus eventos @@@@@ // tem q adicionar segurança nessa rota 
          
-         const idUser = req.body.idUser; 
+         const idUser = req.session.user.id; 
 
          Subs.findAll({where: {userId: idUser }}).then(Subs => {
              //{include:[{ model: Event}]},
@@ -256,9 +256,9 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
     },
  } 
  
-//adm 
-// controle de acesso 
-//segurança as senhas
+// controle de acesso 90%
+// segurança das senhas
+// inscrição duplicada 
 
 
 

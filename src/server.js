@@ -13,11 +13,11 @@ server.set('views', path.join(__dirname, 'views'))
 server.use(express.static('public'))
 //usar o req.body
 server.use(express.urlencoded({ extended: true }))
-//seções
+//seções 
 server.use(session({
     secret: "a37f4b1dc00c407faf06349fe71b6fb2",  //texto aleatório para aumentar a segurança
     cookie: { maxAge: 86400000 } //max age 1 dia 86400000
-}))
+})) 
 //conexão com o banco de dados 
 database
     .authenticate()
