@@ -256,9 +256,19 @@ const puppeteer = require('puppeteer'); // responsável pela entrega do pdf
     },
  } 
  
-// controle de acesso 90%
+// controle de acesso 100%
 // segurança das senhas
 // inscrição duplicada 
+// html, css e bootstrap ou react
+/*
+
++link para detalhes evento
+
+analisar
+
++ autorizar Imprimir somente das eventos inscritos (depois de logado é possivel acessar qualquer roda de certificado )
++ duplicação inscrições eventos
+*/
 
 
 
