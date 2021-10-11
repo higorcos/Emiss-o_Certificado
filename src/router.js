@@ -19,7 +19,7 @@ routes.get('/event/:idUser?', FormController.show_event_open); //Mostra eventos 
 routes.post('/event/sub/:idEvent',userAuth, FormController.subscriptionEvent); //inscrição em evento
 routes.get('/user/event',userAuth, FormController.showEvent);  // lista os evento inscrito
 routes.get('/user/event/print/:idEvent',userAuth, FormController.printCertificate) //Página html com certificado 
-routes.get('/user/event/print/emit/:idEvent',userAuth, FormController.emitCertificate) //emissão do pdf (certificado)
+routes.get('/user/event/print/emit/:idEvent', FormController.emitCertificate) //emissão do pdf (certificado)
 
 
 routes.get('/admin/event/new',adminAuth, FormController.newEvent); //criar evento

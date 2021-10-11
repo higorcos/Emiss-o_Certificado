@@ -1,0 +1,202 @@
+/*
+	@name certificado
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 1440px;  margin-left: auto; margin-right: auto;  }
+
+#_bg__login {
+	top: 0px;
+	left: 0px;
+	width: 1440px;
+	height: 1024px;
+	background:rgba(44,57,75,1);
+}
+
+#nav_bar {
+	top: 0px;
+	left: 0px;
+	width: 1440px;
+	height: 81px;
+}
+
+#rectangle_1 {
+	top: 0px;
+	left: 0px;
+	width: 1440px;
+	height: 81px;
+	background:rgba(255,76,41,1);
+}
+
+
+#rectangle_3 {
+	top: 121px;
+	left: 331px;
+	width: 779px;
+	height: 782px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(51,71,86,1);
+}
+
+
+#fazer_login {
+	top: 261px;
+	left: 631px;
+	width: 212px;
+	height: 75px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 36px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#use_sua_conta_na_cert_now {
+	top: 325px;
+	left: 508px;
+	width: 457px;
+	height: 67px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 36px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#rectangle_5 {
+	top: 584px;
+	left: 653px;
+	width: 155px;
+	height: 39px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	background:rgba(255,76,41,1);
+}
+
+
+#rectangle_6 {
+	top: 521px;
+	left: 539px;
+	width: 372px;
+	height: 40px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(44,57,75,1);
+}
+
+
+#rectangle_2 {
+	top: 446px;
+	left: 539px;
+	width: 372px;
+	height: 40px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(44,57,75,1);
+}
+
+
+#email_ {
+	top: 418px;
+	left: 564px;
+	width: 99px;
+	height: 36px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 24px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#senha_ {
+	top: 492px;
+	left: 564px;
+	width: 112px;
+	height: 35px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 24px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#registrar {
+	top: 646px;
+	left: 680px;
+	width: 131px;
+	height: 36px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 24px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#cert_now {
+	top: 157px;
+	left: 594px;
+	width: 300px;
+	height: 120px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 64px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#logar {
+	top: 590px;
+	left: 694px;
+	width: 104px;
+	height: 35px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 24px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+
+/* Add your custom CSS here */

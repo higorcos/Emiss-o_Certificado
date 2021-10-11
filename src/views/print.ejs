@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,7 @@
     <h3>Certificado</h3>
     <p>
     <% Subs.forEach(function(sub){ %>
-               
+              <p>Curso</p> 
         <% Event.forEach(function(event){ %>
           <% if (event.id == sub.eventId) { %>       
      
@@ -33,7 +33,7 @@
     <%= event.hours %>
     <%= event.organization %>
   
-    <%=sub.userId%>' />
+    <%=sub.userId%>
              
     <% } %>   
     <%}) %> 
